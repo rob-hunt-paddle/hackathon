@@ -1,25 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
 
 class App extends Component {
+
+  state = {
+    checkoutConfig: {
+      product: 534099,
+      checkoutVersion: "new",
+      displayModeTheme: "dark",
+    }
+  }
+
+  componentDidMount() {
+
+  }
+
+  openCheckout() {
+    window.Paddle.Setup({ vendor: 33079 });
+    this.refresh()
+  }
+
+  refresh = () => {
+    window.Paddle.Checkout.open(this.state.checkoutConfig);
+  }
+
+  changeToLightTheme() {
+    this.setState(prevState => (
+      {checkoutConfig:
+        { ...prevState.checkoutConfig,
+          displayModeTheme: 'light'}
+        }
+    ), () => this.refresh())
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="container">
+          <button className="btn" onClick={() => this.openCheckout()}> open checkout </button>
+          <button className="btn" onClick={() => this.changeToLightTheme()}> change theme </button>
+        </div>
       </div>
     );
   }

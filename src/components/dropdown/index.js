@@ -21,7 +21,7 @@ const Dropdown = ({ labelName, updateLocale, updateTheme, checkoutConfig }) => {
               <option selected={'de' === checkoutConfig.locale} value="de">German</option>
               <option selected={'fr' === checkoutConfig.locale} value="fr">French</option>
             </select>
-            <div data-tip="tooltip" data-event="click" className="info-icon">
+            <div data-tip="tooltip" data-event="click" data-type="info" data-place="left" className="info-icon">
               <ReactTooltip>
                 <p>Tooltip text</p>
               </ReactTooltip>

@@ -1,7 +1,5 @@
-.innerInputContainer{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.inputContainer{
+  margin-bottom: 14px;
 }
 
 .labelName{

@@ -1,9 +1,9 @@
 import React from 'react'
 import './index.css'
 
-const group = ({children}) => (
+const group = ({groupName, children}) => (
   <div className="groupContainer">
-    <h6> Group </h6>
+    <h6> {groupName} </h6>
     {children}
   </div>
 )

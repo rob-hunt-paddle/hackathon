@@ -37,17 +37,17 @@ const Modal = ({ checkoutConfig, modal, toggleModal, save }) => (
       <div className="internalContainer">
           <div className="checkoutSettings">
             <div>
-              <Group>
+              <Group groupName="Pre-fill">
                 <Input
                   labelName="Quantity"
                   tooltipText="Quantity tooltip text"
                 />
-              </Group>
-              <Group>
                 <Dropdown
                   labelName="Locale"
                   tooltipText="Locale tooltip text"
                 />
+              </Group>
+              <Group groupName="Layout and styles">
                 <Dropdown
                   labelName="Theme"
                   tooltipText="Theme tooltip text"

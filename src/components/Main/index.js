@@ -28,7 +28,6 @@ class Main extends Component {
 
   componentDidMount() {
     const params = queryString.parse(this.props.location.search)
-    console.log(this.props.checkoutConfig, 'cc')
     for (var key in params){
         const camelCaseKey = humps.camelize(key)
       if (camelCaseKey in this.props.checkoutConfig){

@@ -1,9 +1,9 @@
-.groupContainer{
+.inputContainer{
   display: flex;
   flex-direction: column;
 }
 
-.innerGroupContainer{
+.innerInputContainer{
   display: flex;
   flex-direction: row;
   justify-content: space-between;

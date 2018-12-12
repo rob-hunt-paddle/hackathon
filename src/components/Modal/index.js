@@ -3,8 +3,9 @@ import ReactModal from 'react-modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 
-import Group from '../group'
+import Input from '../input'
 import Dropdown from '../dropdown'
+import Group from '../group'
 import { toggleModal } from '../../redux/action-creators/toggleModal'
 
 const modalContentStyle = {
@@ -39,21 +40,29 @@ const Modal = ({ checkoutConfig, modal, toggleModal }) => (
       <div className="internalContainer">
           <div className="checkoutSettings">
             <div>
-              <Group
-                labelName="Quantity"
-              />
-              <Dropdown
-                labelName="Locale"
-              />
-              <Dropdown
-                labelName="Theme"
-              />
+              <Group>
+                <Input
+                  labelName="Quantity"
+                />
+              </Group>
+              <Group>
+                <Dropdown
+                  labelName="Locale"
+                />
+                <Dropdown
+                  labelName="Theme"
+                />
+              </Group>
             </div>
-            <div> <h6> Group </h6> </div>
           </div>
           <div className="code">
             <pre>
-              {JSON.stringify(checkoutConfig, null, 2)}
+              {`
+                Paddle.Checkout.Open(
+                  ${JSON.stringify(checkoutConfig, null, 2)}
+                )
+                `
+              }
             </pre>
           </div>
         </div>

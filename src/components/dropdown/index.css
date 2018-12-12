@@ -1,0 +1,9 @@
+.innerDropdownContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dropdownContainer{
+  margin-bottom: 10px;
+}

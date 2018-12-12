@@ -1,0 +1,8 @@
+.groupContainer{
+  padding-bottom: 22px;
+  border-bottom: 1px solid #EBECF0;
+}
+
+.groupContainer:not(:first-child) {
+  padding-top: 22px;
+}

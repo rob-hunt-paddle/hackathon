@@ -42,13 +42,13 @@ class Main extends Component {
         }
       }
     }
-    // setTimeout(
-    //     function() {
-    //         this.openCheckout()
-    //     }
-    //     .bind(this),
-    //     250
-    // )
+    setTimeout(
+        function() {
+            this.openCheckout()
+        }
+        .bind(this),
+        250
+    )
   }
 
   openCheckout() {

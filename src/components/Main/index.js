@@ -5,11 +5,11 @@ import queryString from 'query-string'
 import { bindActionCreators } from 'redux'
 
 import humps from 'humps'
-import Group from '../group'
-import Dropdown from '../dropdown'
+import Modal from '../Modal'
 import { updateTheme } from '../../redux/action-creators/updateTheme'
 import { updateLocale } from '../../redux/action-creators/updateLocale'
 import { updateQuantity } from '../../redux/action-creators/updateQuantity'
+import { toggleModal } from '../../redux/action-creators/toggleModal'
 import './App.css'
 
 const languageOptions = [
@@ -22,13 +22,13 @@ const languageOptions = [
 class Main extends Component {
 
   state = {
-    isOpen: false,
+    isOpen: true,
     checkoutVersion: "new",
   }
 
   componentDidMount() {
     const params = queryString.parse(this.props.location.search)
-
+    console.log(this.props.checkoutConfig, 'cc')
     for (var key in params){
         const camelCaseKey = humps.camelize(key)
       if (camelCaseKey in this.props.checkoutConfig){
@@ -43,13 +43,13 @@ class Main extends Component {
         }
       }
     }
-    setTimeout(
-        function() {
-            this.openCheckout()
-        }
-        .bind(this),
-        250
-    )
+    // setTimeout(
+    //     function() {
+    //         this.openCheckout()
+    //     }
+    //     .bind(this),
+    //     250
+    // )
   }
 
   openCheckout() {
@@ -71,79 +71,14 @@ class Main extends Component {
     this.save()
   }
 
-  openModal() {
-    this.setState({isOpen: true})
-  }
-
-  closeModal() {
-    this.setState({isOpen: false})
-  }
-
   render() {
     const { checkoutConfig } = this.props;
     console.log(checkoutConfig, 'cc')
     return (
       <div className="container">
         <button className="btn" onClick={() => this.openCheckout()}> open checkout </button>
-        <button className="btn" onClick={() => this.openModal()}> open modal </button>
-        <ReactModal
-          isOpen={this.state.isOpen}
-          style={{
-            content: {
-              background: '#fff',
-              padding: 0,
-              inset: '0px',
-              border: 'none'
-            },
-            overlay: {
-              position: 'fixed',
-              zIndex: 99999999,
-              width: '100%',
-              maxWidth: '960px',
-              height: '90%',
-              margin: 'auto',
-              borderRadius: '4px'
-            }
-          }}
-        >
-          <div className="modalContainer">
-            <div className="checkoutSettings">
-              <h4>Settings</h4>
-            </div>
-            <div className="internalContainer">
-                <div className="checkoutSettings">
-                  <div>
-                    <Group
-                      labelName="Quantity"
-                    />
-                    <Dropdown
-                      labelName="Locale"
-                    />
-                    <Dropdown
-                      labelName="Theme"
-                    />
-                    <input placeholder="quantity" onChange={(e) => this.changeConfigParam('quantity', e.target.value)} />
-                  </div>
-                  <div> <h6> Group </h6> </div>
-                </div>
-                <div className="code">
-                  <pre>
-                    {JSON.stringify(this.props.checkoutConfig, null, 2)}
-                  </pre>
-                </div>
-              </div>
-             <div className="modalButtons">
-               <button
-                  className="cancelBtn"
-                  onClick={() => this.closeModal()}> Cancel
-               </button>
-               <button
-                  className="updateBtn"
-                  onClick={() => this.toggleModal()}> Update Checkout
-              </button>
-             </div>
-          </div>
-        </ReactModal>
+        <button className="btn" onClick={() => this.props.toggleModal()}> open modal </button>
+        <Modal />
       </div>
     );
   }
@@ -153,6 +88,6 @@ const mapStateToProps = ({ checkoutConfig }) => ({
     checkoutConfig,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ updateTheme, updateLocale, updateQuantity }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ updateTheme, updateLocale, updateQuantity, toggleModal }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)

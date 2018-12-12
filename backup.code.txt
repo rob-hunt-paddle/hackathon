@@ -1,9 +1,0 @@
-
-{`
-  Paddle.Checkout.Open({
-    ${Object.keys(this.state.checkoutConfig).map((key, index) => {
-      console.log(key)
-      return {key}
-    })}
-  })
-`}

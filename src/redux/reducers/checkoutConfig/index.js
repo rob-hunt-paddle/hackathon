@@ -1,5 +1,5 @@
 const initialState = {
-  displayModeTheme: 'dark',
+  displayModeTheme: 'light',
   quantity: 5,
   locale: 'en',
   checkoutVersion: "new",
@@ -18,6 +18,11 @@ export default(state = initialState, action) => {
         ...state,
         locale: action.locale
       }
+      case 'UPDATE_QUANTITY':
+        return {
+          ...state,
+          quantity: action.amount
+        }
     default:
       return state;
   }

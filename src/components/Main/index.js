@@ -9,6 +9,7 @@ import Group from '../group'
 import Dropdown from '../dropdown'
 import { updateTheme } from '../../redux/action-creators/updateTheme'
 import { updateLocale } from '../../redux/action-creators/updateLocale'
+import { updateQuantity } from '../../redux/action-creators/updateQuantity'
 import './App.css'
 
 const languageOptions = [
@@ -21,17 +22,34 @@ const languageOptions = [
 class Main extends Component {
 
   state = {
-    isOpen: true,
+    isOpen: false,
     checkoutVersion: "new",
   }
 
   componentDidMount() {
-    // const params = queryString.parse(this.props.location.search)
-    // this.setState(prevState => ({
-    //   ...prevState.checkoutConfig,
-    //   checkoutConfig: params
-    // }))
-    // this.openCheckout()
+    const params = queryString.parse(this.props.location.search)
+
+    for (var key in params){
+        const camelCaseKey = humps.camelize(key)
+      if (camelCaseKey in this.props.checkoutConfig){
+        if (camelCaseKey === 'locale'){
+          this.props.updateLocale(params[camelCaseKey])
+        }
+        if (camelCaseKey === 'quantity'){
+          this.props.updateQuantity(params[camelCaseKey])
+        }
+        if (camelCaseKey === 'displayModeTheme'){
+          this.props.updateTheme(params['display_mode_theme'])
+        }
+      }
+    }
+    setTimeout(
+        function() {
+            this.openCheckout()
+        }
+        .bind(this),
+        250
+    )
   }
 
   openCheckout() {
@@ -39,15 +57,9 @@ class Main extends Component {
     this.refresh()
   }
 
-  refresh = () => {
-    const checkoutConfig = this.props.checkoutConfig
-    const { product, checkoutVersion } = this.state
-    const mergeState = {
-      ...checkoutConfig,
-      checkoutVersion,
-      product,
-    }
-    window.Paddle.Checkout.open(this.props.checkoutConfig);
+  refresh() {
+    const { checkoutConfig } = this.props
+    window.Paddle.Checkout.open(checkoutConfig);
   }
 
   save() {
@@ -69,6 +81,7 @@ class Main extends Component {
 
   render() {
     const { checkoutConfig } = this.props;
+    console.log(checkoutConfig, 'cc')
     return (
       <div className="container">
         <button className="btn" onClick={() => this.openCheckout()}> open checkout </button>
@@ -96,15 +109,14 @@ class Main extends Component {
             <div className="internalContainer">
                 <div className="checkoutSettings">
                   <div>
-                    <Group labelName="Quantity" />
+                    <Group
+                      labelName="Quantity"
+                    />
                     <Dropdown
                       labelName="Locale"
-                      changeConfigParam={this.changeConfigParam}
-                      options={languageOptions}
                     />
                     <Dropdown
                       labelName="Theme"
-                      changeConfigParam={this.changeConfigParam}
                     />
                     <input placeholder="quantity" onChange={(e) => this.changeConfigParam('quantity', e.target.value)} />
                   </div>
@@ -112,7 +124,7 @@ class Main extends Component {
                 </div>
                 <div className="code">
                   <pre>
-                    the code will go here
+                    {JSON.stringify(this.props.checkoutConfig, null, 2)}
                   </pre>
                 </div>
               </div>
@@ -137,6 +149,6 @@ const mapStateToProps = ({ checkoutConfig }) => ({
     checkoutConfig,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ updateTheme, updateLocale }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ updateTheme, updateLocale, updateQuantity }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)

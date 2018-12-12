@@ -6,14 +6,12 @@ import { updateTheme } from '../../redux/action-creators/updateTheme'
 import { updateLocale } from '../../redux/action-creators/updateLocale'
 import ReactTooltip from 'react-tooltip'
 import { findDOMNode } from 'react-dom'
-
-// import './index.css'
+import './index.css'
 
 const Dropdown = ({ labelName, updateLocale, updateTheme, checkoutConfig }) => {
   return(
-    <div className="groupContainer">
-      <div> <h6> Group </h6> </div>
-      <div className="innerGroupContainer">
+    <div className="dropdownContainer">
+      <div className="innerDropdownContainer">
         <label className="labelName"> {labelName} </label>
         {labelName === 'Locale' ? 
           <div className="inputGroup">

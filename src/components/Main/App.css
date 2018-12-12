@@ -19,6 +19,8 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  box-shadow: 0px -2px 2px rgba(0, 0, 0, 0.08);
+  z-index: 100;
 }
 
 .internalContainer{
@@ -32,6 +34,7 @@
   border: none;
   font-size: 15px;
   color: #73809C;
+  cursor: pointer;
 }
 
 .updateBtn{
@@ -42,18 +45,32 @@
   font-size: 15px;
   font-family: Graphik;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .code {
   background-color: #F5F5F8;
   width: 100%;
+  z-index: 50;
 }
 
 .checkoutSettings{
   width: 100%;
-  padding: 10px;
   color: #36476C;
   font-size: 24px;
+  padding: 22px;
+  box-sizing: border-box;
+  z-index: 50;
+}
+
+.modalContainer > .checkoutSettings{
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+h4{
+  font-weight: normal;
+  margin: 0;
 }
 
 .checkoutParam{
@@ -64,6 +81,49 @@
   }
 }
 
+.groupContainer{ 
+  padding-bottom: 22px;
+  border-bottom: 1px solid #EBECF0;
+}
+
+.groupContainer:not(:first-child) {
+  padding-top: 22px;
+}
+
+h6{
+  color: #0970B9;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.labelName{
+  color: #36476C;
+  font-size: 14px;
+  line-height: 32px;
+}
+
+input, select {
+  width: 100%;
+  max-width: 200px;
+  height: 32px;
+  box-sizing: border-box;
+}
+
+input{
+  border-radius: 4px;
+  color: #36476C;
+  border: 1px solid #D2D4DE;
+  font-size: 14px;
+  padding: 0 8px;
+}
+
+select {
+
+
+}
+
 pre {
   white-space: pre-line;
 }
+
+

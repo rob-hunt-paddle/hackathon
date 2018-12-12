@@ -21,7 +21,7 @@ const languageOptions = [
 class Main extends Component {
 
   state = {
-    isOpen: true,
+    isOpen: false,
     checkoutVersion: "new",
   }
 
@@ -31,7 +31,7 @@ class Main extends Component {
     //   ...prevState.checkoutConfig,
     //   checkoutConfig: params
     // }))
-    // this.openCheckout()
+    this.openCheckout()
   }
 
   openCheckout() {
@@ -79,19 +79,23 @@ class Main extends Component {
             content: {
               background: '#fff',
               padding: 0,
+              inset: '0px',
+              border: 'none'
             },
             overlay: {
               position: 'fixed',
               zIndex: 99999999,
-              width: '800px',
-              height: '600px',
+              width: '100%',
+              maxWidth: '960px',
+              height: '90%',
               margin: 'auto',
+              borderRadius: '4px'
             }
           }}
         >
           <div className="modalContainer">
             <div className="checkoutSettings">
-              <h4> Checkout Settings </h4>
+              <h4>Settings</h4>
             </div>
             <div className="internalContainer">
                 <div className="checkoutSettings">

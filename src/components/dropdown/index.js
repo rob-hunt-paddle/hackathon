@@ -21,35 +21,39 @@ class Dropdown extends React.Component {
   render(){
     const { labelName, updateLocale, updateTheme, checkoutConfig } = this.props
     return (
-      <div className="dropdownContainer">
-      <input
-        type="checkbox"
-        onChange={this.greyOutContainer}
-      />
-        <div className="innerDropdownContainer">
-          <label className="labelName"> {labelName} </label>
-          {labelName === 'Locale' ?
-            <div className={`inputGroup ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
-              <select onChange={(e) => updateLocale(e.target.value)}>
-                <option selected={'en' === checkoutConfig.locale} value="en">English</option>
-                <option selected={'ru' === checkoutConfig.locale} value="ru">Russian</option>
-                <option selected={'de' === checkoutConfig.locale} value="de">German</option>
-                <option selected={'fr' === checkoutConfig.locale} value="fr">French</option>
-              </select>
-              <div data-tip="tooltip" data-event="click" data-type="info" data-place="left" className="info-icon">
-                <ReactTooltip>
-                  <p>Tooltip text</p>
-                </ReactTooltip>
-
-              </div>
+      <div className={`dropdownContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
+        <input
+          type="checkbox"
+          onChange={this.greyOutContainer}
+        />
+        <label className="labelName"> {labelName} </label>
+        {labelName === 'Locale' ?
+          <div className='inputGroup'>
+            <select onChange={(e) => updateLocale(e.target.value)}>
+              <option selected={'en' === checkoutConfig.locale} value="en">English</option>
+              <option selected={'ru' === checkoutConfig.locale} value="ru">Russian</option>
+              <option selected={'de' === checkoutConfig.locale} value="de">German</option>
+              <option selected={'fr' === checkoutConfig.locale} value="fr">French</option>
+            </select>
+            <div data-tip="tooltip" data-type="info" data-place="left" data-for={labelName+"Tooltip"} className="info-icon">
+              <ReactTooltip id={labelName+"Tooltip"}>
+                <p>Locale tooltip</p>
+              </ReactTooltip>
             </div>
-            :
+          </div>  
+          :
+          <div className='inputGroup'>
             <select onChange={(e) => updateTheme(e.target.value)}>
               <option selected={'light' === checkoutConfig.display_mode_theme} value="light">Light</option>
               <option selected={'dark' === checkoutConfig.display_mode_theme} value="dark">Dark</option>
             </select>
-          }
-        </div>
+            <div data-tip="tooltip" data-type="info" data-place="left" data-for={labelName+"Tooltip"} className="info-icon">
+              <ReactTooltip id={labelName+"Tooltip"}>
+                <p>Theme tooltip</p>
+              </ReactTooltip>
+            </div>
+          </div>  
+        }
       </div>
     )
   }

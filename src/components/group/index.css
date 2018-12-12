@@ -1,0 +1,18 @@
+.groupContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.innerGroupContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.labelName{
+  font-size: 12px;
+}
+
+h6{
+  margin: 0;
+}

@@ -4,6 +4,66 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
+}
+
+.modalContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.modalButtons{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.internalContainer{
+  display: flex;
+  height: 100%;
+}
+
+.cancelBtn{
+  font-family: Graphik;
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  color: #73809C;
+}
+
+.updateBtn{
+  color: #fff;
+  background-color: #0096FF;
+  padding: 9px;
+  padding-bottom: 21px;
+  font-size: 15px;
+  font-family: Graphik;
+  border-radius: 3px;
+}
+
+.code {
+  background-color: #F5F5F8;
+  width: 100%;
+}
+
+.checkoutSettings{
+  width: 100%;
+  padding: 10px;
+  color: #36476C;
+  font-size: 24px;
+}
+
+.checkoutParam{
+  display: flex;
+  flex-direction: row;
+  & p {
+    margin: 0;
+  }
+}
+
+pre {
+  white-space: pre-line;
 }

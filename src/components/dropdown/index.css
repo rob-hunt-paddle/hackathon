@@ -7,3 +7,7 @@
 .dropdownContainer{
   margin-bottom: 10px;
 }
+
+.greyOut {
+  opacity: 0.4
+}

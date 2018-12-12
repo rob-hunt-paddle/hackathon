@@ -9,7 +9,7 @@ import Group from '../group'
 import Radio from '../radio'
 import { toggleModal } from '../../redux/action-creators/toggleModal'
 
-const Modal = ({ checkoutConfig, modal, toggleModal }) => (
+const Modal = ({ checkoutConfig, modal, toggleModal, save }) => (
   <ReactModal
     isOpen={modal.isOpen}
     style={{
@@ -75,7 +75,7 @@ const Modal = ({ checkoutConfig, modal, toggleModal }) => (
          </button>
          <button
             className="updateBtn"
-            onClick={() => toggleModal()}> Update Checkout
+            onClick={() => save()}> Update Checkout
         </button>
        </div>
     </div>

@@ -22,7 +22,6 @@ const languageOptions = [
 class Main extends Component {
 
   state = {
-    isOpen: true,
     checkoutVersion: "new",
   }
 
@@ -42,13 +41,7 @@ class Main extends Component {
         }
       }
     }
-    setTimeout(
-        function() {
-            this.openCheckout()
-        }
-        .bind(this),
-        250
-    )
+    setTimeout(() => { this.openCheckout()}, 250)
   }
 
   openCheckout() {
@@ -61,22 +54,19 @@ class Main extends Component {
     window.Paddle.Checkout.open(checkoutConfig);
   }
 
-  save() {
+  save = () => {
     window.Paddle.Checkout.open(this.props.checkoutConfig);
-  }
-
-  toggleModal() {
-    this.setState({isOpen: !this.state.isOpen})
-    this.save()
+    this.props.toggleModal()
   }
 
   render() {
     const { checkoutConfig } = this.props;
-    console.log(checkoutConfig, 'cc')
     return (
       <div className="container">
         <button className="btn" onClick={() => this.props.toggleModal()}> open modal </button>
-        <Modal />
+        <Modal
+          save={this.save}
+        />
       </div>
     );
   }

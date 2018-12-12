@@ -13,6 +13,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  overflow-y: scroll;
 }
 
 .modalButtons{
@@ -85,7 +86,7 @@ h4{
   }
 }
 
-.groupContainer{ 
+.groupContainer{
   padding-bottom: 22px;
   border-bottom: 1px solid #EBECF0;
 }
@@ -145,5 +146,3 @@ select {
 pre {
   white-space: pre-line;
 }
-
-

@@ -19,7 +19,7 @@ class Input extends React.Component {
   }
 
   render(){
-    const { labelName, updateQuantity, checkoutConfig } = this.props
+    const { labelName, tooltipText, updateQuantity, checkoutConfig } = this.props
  
 	return(
 	  <div className={`inputContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
@@ -30,9 +30,9 @@ class Input extends React.Component {
 		<label className="labelName"> {labelName} </label>
 	    <div className='inputGroup'>
 	      <input onChange={(e) => updateQuantity(e.target.value)}/>
-	      <div data-tip="tooltip" data-type="info" data-place="left" data-for={labelName+"Tooltip"} className="info-icon">
-	        <ReactTooltip id={labelName+"Tooltip"}>
-	          <p>Quantity tooltip</p>
+	      <div data-tip="tooltip" data-type="info" data-place="left" data-for={labelName.replace(/\s/g, '')+"Tooltip"} className="info-icon">
+	        <ReactTooltip id={labelName.replace(/\s/g, '')+"Tooltip"}>
+	          <p>{tooltipText}</p>
 	        </ReactTooltip>
 	      </div>
 	    </div>

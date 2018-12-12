@@ -40,14 +40,17 @@ const Modal = ({ checkoutConfig, modal, toggleModal, save }) => (
               <Group>
                 <Input
                   labelName="Quantity"
+                  tooltipText="Quantity tooltip text"
                 />
               </Group>
               <Group>
                 <Dropdown
                   labelName="Locale"
+                  tooltipText="Locale tooltip text"
                 />
                 <Dropdown
                   labelName="Theme"
+                  tooltipText="Theme tooltip text"
                 />
               </Group>
               <Group>

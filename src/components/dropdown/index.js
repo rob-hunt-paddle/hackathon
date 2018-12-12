@@ -19,7 +19,7 @@ class Dropdown extends React.Component {
     this.setState({greyOutContainer: !this.state.greyOutContainer})
   }
   render(){
-    const { labelName, updateLocale, updateTheme, checkoutConfig } = this.props
+    const { labelName, tooltipText, updateLocale, updateTheme, checkoutConfig } = this.props
     return (
       <div className={`dropdownContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
         <input
@@ -35,9 +35,9 @@ class Dropdown extends React.Component {
               <option selected={'de' === checkoutConfig.locale} value="de">German</option>
               <option selected={'fr' === checkoutConfig.locale} value="fr">French</option>
             </select>
-            <div data-tip="tooltip" data-type="info" data-place="left" data-for={labelName+"Tooltip"} className="info-icon">
-              <ReactTooltip id={labelName+"Tooltip"}>
-                <p>Locale tooltip</p>
+            <div data-tip="tooltip" data-type="info" data-place="left" data-for={labelName.replace(/\s/g, '')+"Tooltip"} className="info-icon">
+              <ReactTooltip id={labelName.replace(/\s/g, '')+"Tooltip"}>
+                <p>{tooltipText}</p>
               </ReactTooltip>
             </div>
           </div>  
@@ -49,7 +49,7 @@ class Dropdown extends React.Component {
             </select>
             <div data-tip="tooltip" data-type="info" data-place="left" data-for={labelName+"Tooltip"} className="info-icon">
               <ReactTooltip id={labelName+"Tooltip"}>
-                <p>Theme tooltip</p>
+                <p>{tooltipText}</p>
               </ReactTooltip>
             </div>
           </div>  

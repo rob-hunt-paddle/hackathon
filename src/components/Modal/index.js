@@ -6,31 +6,28 @@ import { bindActionCreators } from 'redux'
 import Input from '../input'
 import Dropdown from '../dropdown'
 import Group from '../group'
+import Radio from '../radio'
 import { toggleModal } from '../../redux/action-creators/toggleModal'
-
-const modalContentStyle = {
-  background: '#fff',
-  padding: 0,
-  inset: '0px',
-  border: 'none'
-}
-
-const modalOverlayStyle = {
-  position: 'fixed',
-  zIndex: 99999999,
-  width: '100%',
-  maxWidth: '960px',
-  height: '90%',
-  margin: 'auto',
-  borderRadius: '4px'
-}
 
 const Modal = ({ checkoutConfig, modal, toggleModal }) => (
   <ReactModal
     isOpen={modal.isOpen}
     style={{
-      content: { modalContentStyle },
-      overlay: { modalOverlayStyle }
+      content: {
+        background: '#fff',
+        padding: 0,
+        inset: '0px',
+        border: 'none'
+      },
+      overlay: {
+        position: 'fixed',
+        zIndex: 99999999,
+        width: '100%',
+        maxWidth: '960px',
+        height: '90%',
+        margin: 'auto',
+        borderRadius: '4px'
+      }
     }}
   >
     <div className="modalContainer">
@@ -51,6 +48,11 @@ const Modal = ({ checkoutConfig, modal, toggleModal }) => (
                 />
                 <Dropdown
                   labelName="Theme"
+                />
+              </Group>
+              <Group>
+                <Radio
+                  labelName="Radio"
                 />
               </Group>
             </div>

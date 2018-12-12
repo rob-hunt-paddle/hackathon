@@ -75,7 +75,6 @@ class Main extends Component {
     console.log(checkoutConfig, 'cc')
     return (
       <div className="container">
-        <button className="btn" onClick={() => this.openCheckout()}> open checkout </button>
         <button className="btn" onClick={() => this.props.toggleModal()}> open modal </button>
         <Modal />
       </div>

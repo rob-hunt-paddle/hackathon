@@ -139,7 +139,7 @@ class Main extends Component {
                </button>
                <button
                   className="updateBtn"
-                  onClick={() => this.toggleModal()}> Update Checkout
+                  onClick={() => this.toggleModal()}> Launch checkout
               </button>
              </div>
           </div>

@@ -16,13 +16,22 @@ class Dropdown extends React.Component {
 
   }
 
+  componentDidMount(){
+    setTimeout(() => {
+      this.setState({ greyOutContainer: !this.props.codeToRender.contents.filter(par => par.name === this.props.labelName)[0].render})
+    }, 100)
+  }
+
   greyOutContainer = (param) => {
-    this.setState({greyOutContainer: !this.state.greyOutContainer})
+    // console.log(this.props.codeToRender.contents.filter(par => par.name === param)[0], 'dis?')
     this.props.updateShowing(param)
+    setTimeout(() => {
+      this.setState({ greyOutContainer: !this.props.codeToRender.contents.filter(par => par.name === param)[0].render})
+    }, 100)
   }
 
   render(){
-    const { labelName, tooltipText, updateValue, checkoutConfig } = this.props
+    const { labelName, tooltipText, updateValue, codeToRender } = this.props
     switch(labelName) {
       case 'locale':
         return (
@@ -30,14 +39,15 @@ class Dropdown extends React.Component {
             <input
               type="checkbox"
               onChange={() => this.greyOutContainer(labelName)}
+              checked={this.props.codeToRender.contents.filter(param => param.name === labelName)[0].render}
             />
             <label className="labelName">{labelName}</label>
             <div className='inputGroup'>
               <select onChange={(e) => updateValue(labelName, e.target.value)}>
-                <option value="en">English</option>
-                <option value="ru">Russian</option>
-                <option value="de">German</option>
-                <option value="fr">French</option>
+                <option selected={'en' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="en">English</option>
+                <option selected={'ru' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="ru">Russian</option>
+                <option selected={'de' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="de">German</option>
+                <option selected={'fr' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="fr">French</option>
               </select>
               <Info labelName={labelName} tooltipText={tooltipText}/>
             </div>
@@ -113,8 +123,8 @@ class Dropdown extends React.Component {
   }
 }
 
-const mapStateToProps = ({ checkoutConfig }) => ({
-    checkoutConfig,
+const mapStateToProps = ({ codeToRender }) => ({
+    codeToRender,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ updateValue, updateShowing}, dispatch)

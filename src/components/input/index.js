@@ -59,7 +59,11 @@ class Input extends React.Component {
 		    />
 			<label className="labelName">{labelName} </label>
 		    <div className='inputGroup'>
-		      <input type='text' onChange={(e) => updateValue(labelName, e.target.value)}/>
+		      <input
+            type='text'
+            onChange={(e) => updateValue(labelName, e.target.value)}
+            value={codeToRender.contents.filter(par => par.name === labelName)[0].value}
+          />
 		      <Info labelName={labelName} tooltipText={tooltipText}/>
 		    </div>
 		  </div>

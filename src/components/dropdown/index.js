@@ -56,12 +56,16 @@ class Dropdown extends React.Component {
       case 'displayModeTheme':
         return (
           <div className={`dropdownContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
-            <input type="checkbox" onChange={() => this.greyOutContainer(labelName)}/>
+            <input
+              type="checkbox"
+              onChange={() => this.greyOutContainer(labelName)}
+              checked={this.props.codeToRender.contents.filter(param => param.name === labelName)[0].render}
+            />
             <label className="labelName">{labelName}</label>
             <div className='inputGroup'>
               <select onChange={(e) => updateValue(labelName, e.target.value)}>
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
+                <option selected={'light' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="light">light</option>
+                <option selected={'dark' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="dark">dark</option>
               </select>
               <Info labelName={labelName} tooltipText={tooltipText}/>
             </div>
@@ -70,21 +74,25 @@ class Dropdown extends React.Component {
       case 'country':
         return (
           <div className={`dropdownContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
-            <input type="checkbox" onChange={() => this.greyOutContainer(labelName)}/>
+            <input
+              type="checkbox"
+              onChange={() => this.greyOutContainer(labelName)}
+              checked={this.props.codeToRender.contents.filter(param => param.name === labelName)[0].render}
+            />
             <label className="labelName">{labelName}</label>
             <div className='inputGroup'>
               <select onChange={(e) => updateValue(labelName, e.target.value)}>
-                <option value="AF">Afghanistan</option>
-                <option value="BR">Brazil</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
-                <option value="JP">Japan</option>
-                <option value="NL">Netherlands</option>
-                <option value="PH">Philippines</option>
-                <option value="ZA">South Africa</option>
-                <option value="AE">United Arab Emirates</option>
-                <option value="GB">United Kingdom</option>
-                <option value="US">United States</option>
+                <option selected={'AF' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="AF">Afghanistan</option>
+                <option selected={'BR' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="BR">Brazil</option>
+                <option selected={'FR' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="FR">France</option>
+                <option selected={'DE' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="DE">Germany</option>
+                <option selected={'JP' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="JP">Japan</option>
+                <option selected={'NL' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="NL">Netherlands</option>
+                <option selected={'PH' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="PH">Philippines</option>
+                <option selected={'ZA' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="ZA">South Africa</option>
+                <option selected={'AE' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="AE">United Arab Emirates</option>
+                <option selected={'GB' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="GB">United Kingdom</option>
+                <option selected={'US' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="US">United States</option>
               </select>
               <Info labelName={labelName} tooltipText={tooltipText}/>
             </div>

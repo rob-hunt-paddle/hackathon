@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux'
 
 import humps from 'humps'
 import Modal from '../Modal'
-import { updateTheme } from '../../redux/action-creators/updateTheme'
 import { updateQuantity } from '../../redux/action-creators/updateQuantity'
 import { toggleModal } from '../../redux/action-creators/toggleModal'
 import './App.css'
@@ -84,6 +83,6 @@ const mapStateToProps = ({ codeToRender }) => ({
     codeToRender,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ updateTheme, updateQuantity, toggleModal }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ updateQuantity, toggleModal }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)

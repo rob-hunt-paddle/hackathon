@@ -4,7 +4,6 @@ const initialState = {
 }
 
 export default(state = initialState, action) => {
-  console.log('reducer')
   switch(action.type){
     case 'UPDATE_THEME':
       return {
@@ -52,7 +51,6 @@ export default(state = initialState, action) => {
         quantity: action.amount
       }
     default:
-      console.log('default')
       return state;
   }
 }

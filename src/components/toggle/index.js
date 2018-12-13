@@ -20,7 +20,7 @@ class Toggle extends React.Component {
 
   render(){
     const { labelName, tooltipText, toggleSwitch, toggleStatus } = this.props
- 
+
   	return(
   	  <div className={`toggleContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
   	    <input
@@ -36,14 +36,10 @@ class Toggle extends React.Component {
           <Info labelName={labelName} tooltipText={tooltipText}/>
   	    </div>
   	  </div>
-  	)	
+  	)
   }
 }
 
-const mapStateToProps = ({ checkoutConfig }) => ({
-    checkoutConfig,
-})
-
 const mapDispatchToProps = dispatch => bindActionCreators({ updateQuantity }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Toggle)
+export default connect(null, mapDispatchToProps)(Toggle)

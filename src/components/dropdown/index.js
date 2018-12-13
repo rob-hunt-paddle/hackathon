@@ -4,14 +4,8 @@ import { connect } from 'react-redux'
 
 import Info from '../info'
 
-import { updateTheme } from '../../redux/action-creators/updateTheme'
-import { updateLocale } from '../../redux/action-creators/updateLocale'
-import { updateCountry } from '../../redux/action-creators/updateCountry'
-
-
-import { updateVersion } from '../../redux/action-creators/updateVersion'
-import { updateMethod } from '../../redux/action-creators/updateMethod'
-
+import { updateShowing } from '../../redux/action-creators/updateShowing'
+import { updateValue } from '../../redux/action-creators/updateValue'
 
 import './index.css'
 
@@ -22,90 +16,95 @@ class Dropdown extends React.Component {
 
   }
 
-  greyOutContainer = () => {
+  greyOutContainer = (param) => {
     this.setState({greyOutContainer: !this.state.greyOutContainer})
+    this.props.updateShowing(param)
   }
+
   render(){
-    const { labelName, tooltipText, updateLocale, updateTheme, updateCountry, updateVersion, updateMethod, checkoutConfig } = this.props
+    const { labelName, tooltipText, updateValue, checkoutConfig } = this.props
     switch(labelName) {
-      case 'Locale':
+      case 'locale':
         return (
           <div className={`dropdownContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
-            <input type="checkbox" onChange={this.greyOutContainer}/>
+            <input
+              type="checkbox"
+              onChange={() => this.greyOutContainer(labelName)}
+            />
             <label className="labelName">{labelName}</label>
             <div className='inputGroup'>
-              <select onChange={(e) => updateLocale(e.target.value)}>
-                <option selected={'en' === checkoutConfig.locale} value="en">English</option>
-                <option selected={'ru' === checkoutConfig.locale} value="ru">Russian</option>
-                <option selected={'de' === checkoutConfig.locale} value="de">German</option>
-                <option selected={'fr' === checkoutConfig.locale} value="fr">French</option>
+              <select onChange={(e) => updateValue(labelName, e.target.value)}>
+                <option value="en">English</option>
+                <option value="ru">Russian</option>
+                <option value="de">German</option>
+                <option value="fr">French</option>
               </select>
               <Info labelName={labelName} tooltipText={tooltipText}/>
-            </div> 
+            </div>
           </div>
         );
-      case 'Theme':
+      case 'displayModeTheme':
         return (
           <div className={`dropdownContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
-            <input type="checkbox" onChange={this.greyOutContainer}/>
+            <input type="checkbox" onChange={() => this.greyOutContainer(labelName)}/>
             <label className="labelName">{labelName}</label>
             <div className='inputGroup'>
-              <select onChange={(e) => updateTheme(e.target.value)}>
-                <option selected={'light' === checkoutConfig.display_mode_theme} value="light">Light</option>
-                <option selected={'dark' === checkoutConfig.display_mode_theme} value="dark">Dark</option>
+              <select onChange={(e) => updateValue(labelName, e.target.value)}>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
               </select>
               <Info labelName={labelName} tooltipText={tooltipText}/>
-            </div> 
+            </div>
           </div>
         );
-      case 'Country':
+      case 'country':
         return (
           <div className={`dropdownContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
-            <input type="checkbox" onChange={this.greyOutContainer}/>
+            <input type="checkbox" onChange={() => this.greyOutContainer(labelName)}/>
             <label className="labelName">{labelName}</label>
             <div className='inputGroup'>
-              <select onChange={(e) => updateCountry(e.target.value)}>
-                <option selected={'AF' === checkoutConfig.guest_country} value="AF">Afghanistan</option>
-                <option selected={'BR' === checkoutConfig.guest_country} value="BR">Brazil</option>
-                <option selected={'FR' === checkoutConfig.guest_country} value="FR">France</option>
-                <option selected={'DE' === checkoutConfig.guest_country} value="DE">Germany</option>
-                <option selected={'JP' === checkoutConfig.guest_country} value="JP">Japan</option>
-                <option selected={'NL' === checkoutConfig.guest_country} value="NL">Netherlands</option>
-                <option selected={'PH' === checkoutConfig.guest_country} value="PH">Philippines</option>
-                <option selected={'ZA' === checkoutConfig.guest_country} value="ZA">South Africa</option>
-                <option selected={'AE' === checkoutConfig.guest_country} value="AE">United Arab Emirates</option>
-                <option selected={'GB' === checkoutConfig.guest_country} value="GB">United Kingdom</option>
-                <option selected={'US' === checkoutConfig.guest_country} value="US">United States</option>
+              <select onChange={(e) => updateValue(labelName, e.target.value)}>
+                <option value="AF">Afghanistan</option>
+                <option value="BR">Brazil</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+                <option value="JP">Japan</option>
+                <option value="NL">Netherlands</option>
+                <option value="PH">Philippines</option>
+                <option value="ZA">South Africa</option>
+                <option value="AE">United Arab Emirates</option>
+                <option value="GB">United Kingdom</option>
+                <option value="US">United States</option>
               </select>
               <Info labelName={labelName} tooltipText={tooltipText}/>
-            </div> 
+            </div>
           </div>
         );
-      case 'Method':
+      case 'method':
         return (
           <div className={`dropdownContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
-            <input type="checkbox" onChange={this.greyOutContainer}/>
+            <input type="checkbox" onChange={() => this.greyOutContainer(labelName)}/>
             <label className="labelName">{labelName}</label>
             <div className='inputGroup'>
-              <select onChange={(e) => updateMethod(e.target.value)}>
-                <option selected={'window' === checkoutConfig.method} value="window">Popup</option>
+              <select onChange={(e) => updateValue(labelName, e.target.value)}>
+                <option value="window">Popup</option>
               </select>
               <Info labelName={labelName} tooltipText={tooltipText}/>
-            </div>  
+            </div>
           </div>
         );
-      case 'Checkout Version':
+      case 'checkoutVersion':
         return (
           <div className={`dropdownContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
-            <input type="checkbox" onChange={this.greyOutContainer}/>
+            <input type="checkbox" onChange={() => this.greyOutContainer(labelName)}/>
             <label className="labelName">{labelName}</label>
             <div className='inputGroup'>
-              <select onChange={(e) => updateVersion(e.target.value)}>
-                <option selected={'new' === checkoutConfig.checkoutVersion} value="new">new</option>
-                <option selected={'old' === checkoutConfig.checkoutVersion} value="old">old</option>
+              <select onChange={(e) => updateValue(labelName, e.target.value)}>
+                <option value="new">new</option>
+                <option value="old">old</option>
               </select>
               <Info labelName={labelName} tooltipText={tooltipText}/>
-            </div> 
+            </div>
           </div>
         );
       default:
@@ -118,6 +117,6 @@ const mapStateToProps = ({ checkoutConfig }) => ({
     checkoutConfig,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ updateTheme, updateLocale, updateCountry, updateVersion, updateMethod }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ updateValue, updateShowing}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)

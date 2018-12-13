@@ -1,10 +1,9 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { updateQuantity } from '../../redux/action-creators/updateQuantity'
-import { updatePostcode } from '../../redux/action-creators/updatePostcode'
-import { updateCoupon } from '../../redux/action-creators/updateCoupon'
-import { updateEmail } from '../../redux/action-creators/updateEmail'
+
+import { updateShowing } from '../../redux/action-creators/updateShowing'
+import { updateValue } from '../../redux/action-creators/updateValue'
 import Info from '../info'
 
 import './index.css'
@@ -13,81 +12,83 @@ class Input extends React.Component {
 
   state = {
     greyOutContainer: true,
-
   }
 
-  greyOutContainer = () => {
+  greyOutContainer = param => {
     this.setState({greyOutContainer: !this.state.greyOutContainer})
+    this.props.updateShowing(param)
   }
 
   render(){
-    const { labelName, tooltipText, updateQuantity, updatePostcode, updateCoupon, updateEmail, checkoutConfig } = this.props
+  const { labelName, tooltipText, updateValue } = this.props
  	switch(labelName) {
-      case 'Quantity':
+      case 'quantity':
 		return(
 		  <div className={`inputContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
 		    <input
-	          type="checkbox"
-		      onChange={this.greyOutContainer}
+	        type="checkbox"
+		      onChange={() => this.greyOutContainer(labelName)}
 		    />
 			<label className="labelName">{labelName} </label>
 		    <div className='inputGroup'>
-		      <input type='text' onChange={(e) => updateQuantity(e.target.value)}/>
+		      <input type='text' onChange={(e) => updateValue(labelName, e.target.value)}/>
 		      <Info labelName={labelName} tooltipText={tooltipText}/>
 		    </div>
 		  </div>
 		)
-	  case 'Email':
+	  case 'email':
 		return(
 		  <div className={`inputContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
 		    <input
 	          type="checkbox"
-		      onChange={this.greyOutContainer}
+		         onChange={() => this.greyOutContainer(labelName)}
 		    />
 			<label className="labelName">{labelName} </label>
 		    <div className='inputGroup'>
-		      <input type='text' value={checkoutConfig.guest_email} onChange={(e) => updateEmail(e.target.value)}/>
+		      <input type='text' onChange={(e) => updateValue(labelName, e.target.value)}/>
 		      <Info labelName={labelName} tooltipText={tooltipText}/>
 		    </div>
 		  </div>
 		)
-	  case 'Postcode':
+	  case 'postcode':
 		return(
 		  <div className={`inputContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
 		    <input
 	          type="checkbox"
-		      onChange={this.greyOutContainer}
+		        onChange={() => this.greyOutContainer(labelName)}
 		    />
 			<label className="labelName">{labelName} </label>
 		    <div className='inputGroup'>
-		      <input type='text' value={checkoutConfig.guest_postcode} onChange={(e) => updatePostcode(e.target.value)}/>
+		      <input type='text' onChange={(e) => updateValue(labelName, e.target.value)}/>
 		      <Info labelName={labelName} tooltipText={tooltipText}/>
 		    </div>
 		  </div>
 		)
-	  case 'Coupon':
+	  case 'coupon':
 		return(
 		  <div className={`inputContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
 		    <input
 	          type="checkbox"
-		      onChange={this.greyOutContainer}
+		      onChange={() => this.greyOutContainer(labelName)}
 		    />
 			<label className="labelName">{labelName} </label>
 		    <div className='inputGroup'>
-		      <input type='text' onChange={(e) => updateCoupon(e.target.value)}/>
+		      <input type='text' onChange={(e) => updateValue(labelName, e.target.value)}/>
 		      <Info labelName={labelName} tooltipText={tooltipText}/>
 		    </div>
 		  </div>
 		)
+    default:
+      return null;
 	}
 
   }
 }
 
-const mapStateToProps = ({ checkoutConfig }) => ({
-    checkoutConfig,
+const mapStateToProps = ({ codeToRender }) => ({
+    codeToRender,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ updateQuantity, updatePostcode, updateCoupon, updateEmail}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ updateShowing, updateValue}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input)

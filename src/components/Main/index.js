@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux'
 import humps from 'humps'
 import Modal from '../Modal'
 import { updateTheme } from '../../redux/action-creators/updateTheme'
-import { updateLocale } from '../../redux/action-creators/updateLocale'
 import { updateQuantity } from '../../redux/action-creators/updateQuantity'
 import { toggleModal } from '../../redux/action-creators/toggleModal'
 import './App.css'
@@ -26,22 +25,31 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    const params = queryString.parse(this.props.location.search)
-    for (var key in params){
-        const camelCaseKey = humps.camelize(key)
-      if (camelCaseKey in this.props.checkoutConfig){
-        if (camelCaseKey === 'locale'){
-          this.props.updateLocale(params[camelCaseKey])
-        }
-        if (camelCaseKey === 'quantity'){
-          this.props.updateQuantity(params[camelCaseKey])
-        }
-        if (camelCaseKey === 'displayModeTheme'){
-          this.props.updateTheme(params['display_mode_theme'])
-        }
-      }
-    }
+    // const params = queryString.parse(this.props.location.search)
+    // for (var key in params){
+    //     const camelCaseKey = humps.camelize(key)
+    //   if (camelCaseKey in this.props.checkoutConfig){
+    //     if (camelCaseKey === 'locale'){
+    //       this.props.updateLocale(params[camelCaseKey])
+    //     }
+    //     if (camelCaseKey === 'quantity'){
+    //       this.props.updateQuantity(params[camelCaseKey])
+    //     }
+    //     if (camelCaseKey === 'displayModeTheme'){
+    //       this.props.updateTheme(params['display_mode_theme'])
+    //     }
+    //   }
+    // }
     setTimeout(() => { this.openCheckout()}, 250)
+  }
+
+  transformCodeToShow = () => {
+    const x = this.props.codeToRender.contents.filter(item => item.render !== false)
+    let obj = {}
+    x.forEach((item) => (
+      obj[item.name] = item.value
+    ))
+    return obj
   }
 
   openCheckout() {
@@ -50,19 +58,15 @@ class Main extends Component {
   }
 
   refresh() {
-    const { checkoutConfig } = this.props
-    console.log(checkoutConfig);
-    window.Paddle.Checkout.open(checkoutConfig);
+    window.Paddle.Checkout.open(this.transformCodeToShow());
   }
 
   save = () => {
-    console.log(this.props.checkoutConfig);
-    window.Paddle.Checkout.open(this.props.checkoutConfig);
+    window.Paddle.Checkout.open(this.transformCodeToShow());
     this.props.toggleModal()
   }
 
   render() {
-    const { checkoutConfig } = this.props;
     return (
       <div className="container">
         <button className="btn" onClick={() => this.props.toggleModal()}> <i class="material-icons">edit</i> </button>
@@ -74,10 +78,10 @@ class Main extends Component {
   }
 }
 
-const mapStateToProps = ({ checkoutConfig }) => ({
-    checkoutConfig,
+const mapStateToProps = ({ codeToRender }) => ({
+    codeToRender,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ updateTheme, updateLocale, updateQuantity, toggleModal }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ updateTheme, updateQuantity, toggleModal }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)

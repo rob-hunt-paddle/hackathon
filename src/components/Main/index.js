@@ -53,6 +53,7 @@ class Main extends Component {
   }
 
   openCheckout() {
+    window.Paddle.Environment.set("staging");
     window.Paddle.Setup({ vendor: 33079 });
     this.refresh()
   }

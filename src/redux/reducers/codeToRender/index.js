@@ -21,14 +21,24 @@ const initialState = {
       value: 'en'
     },
     {
-      name: 'postcode',
-      render: false,
-      value: 'en'
-    },
-    {
       name: 'email',
       render: false,
-      value: 'en'
+      value: 'test@paddle.com'
+    },
+    {
+      name: 'country',
+      render: false,
+      value: 'GB'
+    },
+    {
+      name: 'postcode',
+      render: false,
+      value: 'EC2A 2DB'
+    },
+    {
+      name: 'method',
+      render: false,
+      value: 'window'
     },
     {
       name: 'product',

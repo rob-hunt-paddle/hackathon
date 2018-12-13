@@ -21,10 +21,11 @@ class Modal extends React.Component {
     x.forEach((item) => (
       obj[item.name] = item.value
     ))
+    // console.log(JSON.stringify(this.transformCodeToShow(), null, 2))
     return obj
   }
   render() {
-    const { codeToRender, modal, toggleModal, save } = this.props
+    const { modal, toggleModal, save } = this.props
     return (
       <ReactModal
         isOpen={modal.isOpen}
@@ -114,9 +115,7 @@ class Modal extends React.Component {
               <div className="code">
                 <pre>
                   {`
-                    Paddle.Checkout.Open(
-                      ${JSON.stringify(this.transformCodeToShow(), null, 2)}
-                    )
+                    Paddle.Checkout.Open(${JSON.stringify(this.transformCodeToShow(), null, 2)})
                     `
                   }
                 </pre>

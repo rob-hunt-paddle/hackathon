@@ -58,11 +58,6 @@ const initialState = {
   ]
 }
 
-const filterState = (state) => {
-  state.filter(item => item.name === 'displayModeTheme')
-
-}
-
 export default(state = initialState, action) => {
   switch(action.type){
     case 'UPDATE_SHOWING':

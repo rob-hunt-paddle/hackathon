@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-import ReactModal from 'react-modal';
 import { connect } from 'react-redux';
-import queryString from 'query-string'
 import { bindActionCreators } from 'redux'
 
-import humps from 'humps'
 import Modal from '../Modal'
 import { updateQuantity } from '../../redux/action-creators/updateQuantity'
 import { toggleModal } from '../../redux/action-creators/toggleModal'
 import './App.css'
-
-const languageOptions = [
-  {name: 'English', langCode: 'en'},
-  {name: 'French', langCode: 'fr'},
-  {name: 'German', langCode: 'de'},
-  {name: 'Russian', langCode: 'ru'},
-]
 
 class Main extends Component {
 
@@ -24,21 +14,6 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    // const params = queryString.parse(this.props.location.search)
-    // for (var key in params){
-    //     const camelCaseKey = humps.camelize(key)
-    //   if (camelCaseKey in this.props.checkoutConfig){
-    //     if (camelCaseKey === 'locale'){
-    //       this.props.updateLocale(params[camelCaseKey])
-    //     }
-    //     if (camelCaseKey === 'quantity'){
-    //       this.props.updateQuantity(params[camelCaseKey])
-    //     }
-    //     if (camelCaseKey === 'displayModeTheme'){
-    //       this.props.updateTheme(params['display_mode_theme'])
-    //     }
-    //   }
-    // }
     setTimeout(() => { this.openCheckout()}, 250)
   }
 
@@ -69,8 +44,8 @@ class Main extends Component {
   render() {
     return (
       <div className="container">
-        <span class="oppo">OPPO</span>
-        <button className="btn" onClick={() => this.props.toggleModal()}> <i class="material-icons">edit</i> </button>
+        <span className="oppo">OPPO</span>
+        <button className="btn" onClick={() => this.props.toggleModal()}> <i className="material-icons">edit</i> </button>
         <Modal
           save={this.save}
         />

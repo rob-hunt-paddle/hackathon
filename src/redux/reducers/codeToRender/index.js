@@ -41,13 +41,18 @@ const initialState = {
       value: 'window'
     },
     {
+      name: 'coupon',
+      render: false,
+      value: 'COUPON100'
+    },
+    {
       name: 'method',
       render: false,
       value: 'en'
     },
     {
       name: 'product',
-      value: 100,
+      value: 700,
       render: true,
     }
   ]

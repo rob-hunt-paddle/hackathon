@@ -89,6 +89,10 @@ class Modal extends React.Component {
                     labelName="postcode"
                     tooltipText="Postcode tooltip text"
                   />
+                  <Input
+                    labelName="coupon"
+                    tooltipText="Coupon tooltip text"
+                  />
                 </Group>
                 <Group groupName="Layout and styles">
                   <Dropdown

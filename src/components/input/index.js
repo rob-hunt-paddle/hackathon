@@ -74,10 +74,15 @@ class Input extends React.Component {
 		    <input
 	          type="checkbox"
 		        onChange={() => this.greyOutContainer(labelName)}
+		        checked={this.props.codeToRender.contents.filter(param => param.name === labelName)[0].render}
 		    />
 			<label className="labelName">{labelName} </label>
 		    <div className='inputGroup'>
-		      <input type='text' onChange={(e) => updateValue(labelName, e.target.value)}/>
+		      <input 
+			      type='text' 
+			      onChange={(e) => updateValue(labelName, e.target.value)} 
+			      value={codeToRender.contents.filter(par => par.name === labelName)[0].value}
+		      />
 		      <Info labelName={labelName} tooltipText={tooltipText}/>
 		    </div>
 		  </div>
@@ -88,10 +93,15 @@ class Input extends React.Component {
 		    <input
 	          type="checkbox"
 		      onChange={() => this.greyOutContainer(labelName)}
+		      checked={this.props.codeToRender.contents.filter(param => param.name === labelName)[0].render}
 		    />
 			<label className="labelName">{labelName} </label>
 		    <div className='inputGroup'>
-		      <input type='text' onChange={(e) => updateValue(labelName, e.target.value)}/>
+		      <input 
+		      	type='text' 
+		      	onChange={(e) => updateValue(labelName, e.target.value)}
+		      	value={codeToRender.contents.filter(par => par.name === labelName)[0].value}
+	      	  />
 		      <Info labelName={labelName} tooltipText={tooltipText}/>
 		    </div>
 		  </div>

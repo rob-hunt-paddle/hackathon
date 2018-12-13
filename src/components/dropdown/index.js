@@ -122,8 +122,8 @@ class Dropdown extends React.Component {
             <label className="labelName">{labelName}</label>
             <div className='inputGroup'>
               <select onChange={(e) => updateValue(labelName, e.target.value)}>
-                <option value="new">new</option>
-                <option value="old">old</option>
+                <option selected={'new' === codeToRender.contents.filter(par => par.name === labelName)[0].value} value="new">new</option>
+                <option selected={'old' === codeToRender.contents.filter(par => par.name === labelName)[0].value}value="old">old</option>
               </select>
               <Info labelName={labelName} tooltipText={tooltipText}/>
             </div>

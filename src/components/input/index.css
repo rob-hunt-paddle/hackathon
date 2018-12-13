@@ -9,3 +9,7 @@
 h6{
   margin: 0;
 }
+
+.greyOut input[type='text'] {
+    display: none;
+}

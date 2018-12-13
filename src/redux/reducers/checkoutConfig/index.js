@@ -1,32 +1,31 @@
 const initialState = {
-  displayModeTheme: 'light',
-  quantity: 5,
-  locale: 'en',
   checkoutVersion: "new",
-  product: 534099,
+  product: 534099
 }
 
 export default(state = initialState, action) => {
+  console.log('reducer')
   switch(action.type){
     case 'UPDATE_THEME':
       return {
         ...state,
-        displayModeTheme: action.theme
+        display_mode_theme: action.theme
       }
     case 'UPDATE_COUNTRY':
+      console.log(action)
       return {
         ...state,
-        locale: action.country
+        country: action.country
       }
     case 'UPDATE_VERSION':
       return {
         ...state,
-        locale: action.version
+        checkout_version: action.version
       }
     case 'UPDATE_METHOD':
       return {
         ...state,
-        locale: action.method
+        method: action.method
       }
     case 'UPDATE_LOCALE':
       return {
@@ -39,6 +38,7 @@ export default(state = initialState, action) => {
         quantity: action.amount
       }
     default:
+      console.log('default')
       return state;
   }
 }

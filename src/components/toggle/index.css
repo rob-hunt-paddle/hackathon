@@ -14,3 +14,8 @@
 .MuiSwitch-switchBase-4 {
 	max-height: 32px;
 }
+
+.greyOut .MuiSwitch-root-1 {
+    display: none;
+}
+

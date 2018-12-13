@@ -137,14 +137,7 @@ input, select {
   margin: 0;
 }
 
-.info-icon {
-  width: 24px;
-  height: 24px;
-  background-image: url('https://i.ibb.co/1m06xzc/info.png');
-  background-size: cover;
-  display: inline-block;
-  margin: 4px 0 4px 12px;
-}
+
 pre {
   white-space: pre-line;
 }

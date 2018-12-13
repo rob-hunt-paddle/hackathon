@@ -27,7 +27,7 @@ class Toggle extends React.Component {
             type="checkbox"
   	      onChange={this.greyOutContainer}
   	    />
-  		  <label className="labelName"> {labelName} </label>
+  		  <label className="labelName">{labelName}</label>
         <div className='inputGroup toggleGroup'>
           <Switch
             onClick={toggleSwitch}

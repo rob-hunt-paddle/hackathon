@@ -37,6 +37,12 @@ const Modal = ({ checkoutConfig, modal, toggleModal, save }) => (
       <div className="internalContainer">
           <div className="checkoutSettings">
             <div>
+              <Group groupName="General">
+                <Dropdown
+                  labelName="Checkout Version"
+                  tooltipText="Version tooltip text"
+                />
+              </Group>
               <Group groupName="Pre-fill">
                 <Input
                   labelName="Quantity"
@@ -46,11 +52,19 @@ const Modal = ({ checkoutConfig, modal, toggleModal, save }) => (
                   labelName="Locale"
                   tooltipText="Locale tooltip text"
                 />
+                <Dropdown
+                  labelName="Country"
+                  tooltipText="Country tooltip text"
+                />
               </Group>
               <Group groupName="Layout and styles">
                 <Dropdown
                   labelName="Theme"
                   tooltipText="Theme tooltip text"
+                />
+                <Dropdown
+                  labelName="Method"
+                  tooltipText="Method tooltip text"
                 />
               </Group>
               <Group groupName="Feature flags">

@@ -26,9 +26,9 @@ class Input extends React.Component {
           type="checkbox"
 	      onChange={this.greyOutContainer}
 	    />
-		<label className="labelName"> {labelName} </label>
+		<label className="labelName">{labelName}</label>
 	    <div className='inputGroup'>
-	      <input onChange={(e) => updateQuantity(e.target.value)}/>
+	      <input type='text' onChange={(e) => updateQuantity(e.target.value)}/>
 	      <Info labelName={labelName} tooltipText={tooltipText}/>
 	    </div>
 	  </div>

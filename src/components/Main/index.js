@@ -51,10 +51,12 @@ class Main extends Component {
 
   refresh() {
     const { checkoutConfig } = this.props
+    console.log(checkoutConfig);
     window.Paddle.Checkout.open(checkoutConfig);
   }
 
   save = () => {
+    console.log(this.props.checkoutConfig);
     window.Paddle.Checkout.open(this.props.checkoutConfig);
     this.props.toggleModal()
   }

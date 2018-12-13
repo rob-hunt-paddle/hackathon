@@ -63,7 +63,7 @@ class Main extends Component {
     const { checkoutConfig } = this.props;
     return (
       <div className="container">
-        <button className="btn" onClick={() => this.props.toggleModal()}> open modal </button>
+        <button className="btn" onClick={() => this.props.toggleModal()}> <i class="material-icons">edit</i> </button>
         <Modal
           save={this.save}
         />

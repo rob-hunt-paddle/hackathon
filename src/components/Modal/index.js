@@ -43,19 +43,27 @@ const Modal = ({ checkoutConfig, modal, toggleModal, save }) => (
                   labelName="Checkout Version"
                   tooltipText="Version tooltip text"
                 />
+                <Dropdown
+                  labelName="Locale"
+                  tooltipText="Locale tooltip text"
+                />
               </Group>
               <Group groupName="Pre-fill">
                 <Input
                   labelName="Quantity"
                   tooltipText="Quantity tooltip text"
                 />
-                <Dropdown
-                  labelName="Locale"
-                  tooltipText="Locale tooltip text"
+                <Input
+                  labelName="Email"
+                  tooltipText="Email tooltip text"
                 />
                 <Dropdown
                   labelName="Country"
                   tooltipText="Country tooltip text"
+                />
+                <Input
+                  labelName="Postcode"
+                  tooltipText="Postcode tooltip text"
                 />
               </Group>
               <Group groupName="Layout and styles">

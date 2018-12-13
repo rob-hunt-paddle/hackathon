@@ -11,11 +11,25 @@ export default(state = initialState, action) => {
         ...state,
         display_mode_theme: action.theme
       }
-    case 'UPDATE_COUNTRY':
-      console.log(action)
+    case 'UPDATE_COUPON':
       return {
         ...state,
-        country: action.country
+        coupon: action.coupon
+      }
+    case 'UPDATE_EMAIL':
+      return {
+        ...state,
+        guest_email: action.email
+      }
+    case 'UPDATE_COUNTRY':
+      return {
+        ...state,
+        guest_country: action.country
+      }
+    case 'UPDATE_POSTCODE':
+      return {
+        ...state,
+        guest_postcode: action.postcode
       }
     case 'UPDATE_VERSION':
       return {

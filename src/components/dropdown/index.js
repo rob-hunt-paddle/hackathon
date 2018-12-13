@@ -2,10 +2,15 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import Info from '../info'
+
 import { updateTheme } from '../../redux/action-creators/updateTheme'
 import { updateLocale } from '../../redux/action-creators/updateLocale'
-import ReactTooltip from 'react-tooltip'
-import { findDOMNode } from 'react-dom'
+import { updateCountry } from '../../redux/action-creators/updateCountry'
+import { updateVersion } from '../../redux/action-creators/updateVersion'
+import { updateMethod } from '../../redux/action-creators/updateMethod'
+
+
 import './index.css'
 
 class Dropdown extends React.Component {
@@ -26,34 +31,23 @@ class Dropdown extends React.Component {
           type="checkbox"
           onChange={this.greyOutContainer}
         />
-        <label className="labelName"> {labelName} </label>
-        {labelName === 'Locale' ?
-          <div className='inputGroup'>
+        <label className="labelName">{labelName}</label>
+        <div className='inputGroup'>
+          {labelName === 'Locale' ?
             <select onChange={(e) => updateLocale(e.target.value)}>
               <option selected={'en' === checkoutConfig.locale} value="en">English</option>
               <option selected={'ru' === checkoutConfig.locale} value="ru">Russian</option>
               <option selected={'de' === checkoutConfig.locale} value="de">German</option>
               <option selected={'fr' === checkoutConfig.locale} value="fr">French</option>
             </select>
-            <div data-tip="tooltip" data-type="info" data-place="left" data-for={labelName.replace(/\s/g, '')+"Tooltip"} className="info-icon">
-              <ReactTooltip id={labelName.replace(/\s/g, '')+"Tooltip"}>
-                <p>{tooltipText}</p>
-              </ReactTooltip>
-            </div>
-          </div>  
-          :
-          <div className='inputGroup'>
+            :
             <select onChange={(e) => updateTheme(e.target.value)}>
               <option selected={'light' === checkoutConfig.display_mode_theme} value="light">Light</option>
               <option selected={'dark' === checkoutConfig.display_mode_theme} value="dark">Dark</option>
             </select>
-            <div data-tip="tooltip" data-type="info" data-place="left" data-for={labelName+"Tooltip"} className="info-icon">
-              <ReactTooltip id={labelName+"Tooltip"}>
-                <p>{tooltipText}</p>
-              </ReactTooltip>
-            </div>
-          </div>  
-        }
+          }
+          <Info labelName={labelName} tooltipText={tooltipText}/>
+        </div> 
       </div>
     )
   }

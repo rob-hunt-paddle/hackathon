@@ -26,7 +26,8 @@ const Modal = ({ checkoutConfig, modal, toggleModal, save }) => (
         maxWidth: '960px',
         height: '90%',
         margin: 'auto',
-        borderRadius: '4px'
+        borderRadius: '4px',
+        backgroundColor: 'transparent'
       }
     }}
   >

@@ -106,7 +106,11 @@ class Dropdown extends React.Component {
       case 'checkoutVersion':
         return (
           <div className={`dropdownContainer ${this.state.greyOutContainer ? 'greyOut' : ''}`}>
-            <input type="checkbox" onChange={() => this.greyOutContainer(labelName)}/>
+            <input
+              type="checkbox"
+              onChange={() => this.greyOutContainer(labelName)}
+              checked={this.props.codeToRender.contents.filter(param => param.name === labelName)[0].render}
+            />
             <label className="labelName">{labelName}</label>
             <div className='inputGroup'>
               <select onChange={(e) => updateValue(labelName, e.target.value)}>

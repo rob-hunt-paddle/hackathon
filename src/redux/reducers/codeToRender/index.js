@@ -41,6 +41,11 @@ const initialState = {
       value: 'window'
     },
     {
+      name: 'method',
+      render: false,
+      value: 'en'
+    },
+    {
       name: 'product',
       value: 100,
       render: true,

@@ -17,17 +17,27 @@ const Modal = ({ checkoutConfig, modal, toggleModal, save }) => (
         background: '#fff',
         padding: 0,
         inset: '0px',
-        border: 'none'
+        border: 'none',      
+        top: '40px',
+        right: '40px',
+        bottom: '40px',
+        left: '40px',
+        margin: 'auto',
+        maxWidth: '960px',
+        height: '85%'
       },
       overlay: {
         position: 'fixed',
         zIndex: 99999999,
         width: '100%',
-        maxWidth: '960px',
-        height: '90%',
         margin: 'auto',
         borderRadius: '4px',
-        backgroundColor: 'transparent'
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+        
       }
     }}
   >

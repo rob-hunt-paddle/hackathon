@@ -65,6 +65,7 @@ class Main extends Component {
     const { checkoutConfig } = this.props;
     return (
       <div className="container">
+        <span class="oppo">OPPO</span>
         <button className="btn" onClick={() => this.props.toggleModal()}> <i class="material-icons">edit</i> </button>
         <Modal
           save={this.save}

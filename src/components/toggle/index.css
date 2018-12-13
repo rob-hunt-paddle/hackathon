@@ -1,0 +1,16 @@
+.toggleContainer{
+  margin-bottom: 14px;
+}
+
+.inputGroup.toggleGroup {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.toggleGroup .info-icon {
+	margin-left: 0;
+}
+
+.MuiSwitch-switchBase-4 {
+	max-height: 32px;
+}

@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import Input from '../input'
 import Dropdown from '../dropdown'
 import Group from '../group'
-import Radio from '../radio'
+import Toggle from '../toggle'
 import { toggleModal } from '../../redux/action-creators/toggleModal'
 
 const Modal = ({ checkoutConfig, modal, toggleModal, save }) => (
@@ -53,9 +53,9 @@ const Modal = ({ checkoutConfig, modal, toggleModal, save }) => (
                   tooltipText="Theme tooltip text"
                 />
               </Group>
-              <Group>
-                <Radio
-                  labelName="Radio"
+              <Group groupName="Feature flags">
+                <Toggle
+                  labelName="Toggle switch"
                 />
               </Group>
             </div>
